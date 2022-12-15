@@ -1,0 +1,76 @@
+Hannah Kwon
+705182275
+
+2.1
+Have to export path after logging in to calculate : export PATH=/usr/local/cs/bin:$PATH
+
+Start up a fresh Emacs with a *scratch* buffer. 
+C - x b (default : scratch) Enter 
+
+Compute (2521 − 1) × (2521 − 1)
+(* (expt 2 (- 521 1)) (- (expt 2 521) 1))
+Output : 
+23562723457267347065789548996709904988477547858392600710143027597506337283178622\
+23973036553960260056136025556646250327017505289257804321554338249842877715242701\
+03944969186640286445341280338314397902368386240331714359223566432197031017207131\
+63527487298747400647801939587165936401087419375649057918549492160555646976
+
+Use Emacs to determine how many bits it would take to represent this number in base-2 notation (not counting any sign bit), by writing a Lisp expression that yields the number of bits as an integer.
+(logb (* (expt 2 (- 521 1)) (- (expt 2 521) 1)))
+Output : 1040
+
+Type M-: and use it to compute (2521 − 1) × (2521 − 1).
+Output : 235627234572673470657895489967099049884775478583926007101430275975063372831786222397303655396026005613602555664625032701750528925780432155433824984287771524270103\
+94496918664028644534128033831439790236838624033171435922356643219703101720713163527487298747400647801939587165936401087419375649057918549492160555646976 (#o777777\
+777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777\
+777776000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\
+00000000000000000, #x1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0000000000\
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000)
+
+Typing C-h k C-h k 
+This shows the description of the keystroke C-h k. C-h k is a keystroke which describes what the following keystroke does. 
+Brief description of C-h k : C-h k runs the command describe-key (found in global-map), which is an interactive compiled Lisp function in ‘help.el’.
+
+Typing C-h k M-Space 
+This shows the description of M-space. 
+Brief description of M-space : M-SPC runs the command just-one-space (found in global-map), which is an interactive compiled Lisp function in ‘simple.el’. Delete all spaces and tabs around point, leaving one space (or N spaces).
+
+Try out M-SPC on some sample text with a lot of white space, to see how it works.
+When there is a long white space string and M-SPC it deletes all spaces and tabs around point by just leaving one single space. 
+
+
+Visit the source code for the function that implements M-SPC, by going to its help and clicking (or typing RET) on its source file name.
+M-x find-function RET (function-name : just-one-name)
+(defun just-one-space (&optional n)
+  "Delete all spaces and tabs around point, leaving one space (or N spaces).
+If N is negative, delete newlines as well, leaving -N spaces.
+See also `cycle-spacing'."
+  (interactive "*p")
+  (cycle-spacing n nil 'single-shot))
+
+Notice how M-SPC is implemented in terms of a more-general function, which does not have a keybinding. Use M-: to execute this more-general function on a buffer, such that the function changes the buffer's contents.
+M-: (cycle-spacing) Enter
+
+Similarly, use M-x to execute the more-general function on a buffer.
+M-x cycle-spacing Enter
+
+Homework : Python Scripting 
+What happens when this script is invoked on an empty file like /dev/null, and why?
+- It throws a Index error : list index out of range
+- The file /dev/null is basically an empty file. Since the randline.py script tries to read from the file and index the elements in the file, it assumes the file has something in it.Because the seq is empty we get the index error.
+
+What happens when this script is invoked with Python 3 rather than Python 2, and why? (You can run Python 3 on the SEASnet hosts by using the command python3 instead of python2.)
+- Running python3 gives syntax error since python2 and python3 have different syntax
+File "randline.py", line 65
+    except IOError as (errno, strerror):
+                      ^
+SyntaxError: invalid syntax
+
+What happens when your shuf.py script is invoked with Python 2 rather than Python 3, and why?
+Output :
+File "week2/shuf.py", line 127
+    match vars(args) :
+             ^
+It gives syntax error because pattern matching is new in python3.10 and python2 doesn't handle. 
+
+
