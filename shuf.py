@@ -69,19 +69,7 @@ class Shuffle :
 
 
         
-# read from stdin        
-
-
-
-
-
-            
-
-# class shuf : 
-#     def __init__(self, input_file) :
-
-# 1. get all the arguments and parse arguments and sys.stdout.write out 
-# 2. 
+# read from stdin       
 
 def main() : 
     # Initializing parser 
@@ -92,38 +80,8 @@ def main() :
     parser.add_argument('-r','--repeat',  help = 'output lines can be repeated', action = 'store_true')
     parser.add_argument('filename', help = 'put in filename',  const = False, nargs = '?')
 
-    # file name make it optonal - currently it's require 
-
-
     args = parser.parse_args() #non_args is a list
-
-    # zero non-option arguments 
-    # or a single non-option argument "-"
     
-
-
-
-
-
-    # sys.stdout.write(args.filename[0])
-    # sys.stdout.write(args.head_count)
-    
-    #output_file is the list that shows the outcome from either the file, stdin, or input range
-    # output_file = []
-    # file = open(args.filename,"r").readlines()
-    # for line in file : 
-    #     output_file.append(line.rstrip('\n'))
-
-
-    #isFile is True when there are no echo and no input_range arguments
-    # isFile = True
-
-    # if args.echo == None and args.input_range == None :
-    #     isFile = False #echo and input_range doesn't need a file, directly gets input from command
-
-    # if (len(non_args) == 0 and not isFile) : 
-    #     stdin = True #read from user's input not a file 
-
     match vars(args) : 
         #throw errors
         case {"echo" : echo ,"input_range" : num_range} if echo is not None and num_range is not None: 
